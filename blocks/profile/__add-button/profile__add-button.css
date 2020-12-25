@@ -10,3 +10,9 @@
     padding: 0;
     background-color: transparent;
 }
+
+@media screen and (max-width: 320px) {
+    .profile__add-button {
+        width: 100%;
+    }
+}

@@ -6,3 +6,9 @@
     margin-top: 37px;
     margin-bottom: 0;
 }
+
+@media screen and (max-width: 320px) {
+    .header__line {
+        margin-top: 8.3%;
+    }
+}
