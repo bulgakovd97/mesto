@@ -28,7 +28,7 @@
     .profile__occupation {
         font-size: 14px;
         line-height: 17px;
-        text-align: center;
+        text-align: start;
         padding-left: 15px;
         margin-top: 5px;
     }
