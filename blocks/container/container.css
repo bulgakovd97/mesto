@@ -6,10 +6,11 @@
     box-sizing: border-box;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 490px) {
     .container {
         width: 100%;
         padding-top: 28px;
         padding-bottom: 36px;
+        max-width: 320px;
     }
 }

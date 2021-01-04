@@ -7,7 +7,7 @@
     margin-bottom: 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 490px) {
     .header__line {
         margin-top: 8.3%;
     }

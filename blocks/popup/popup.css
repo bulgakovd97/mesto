@@ -4,14 +4,14 @@
     border-radius: 10px;
     width: 100%;
     max-width: 430px;
-    padding: 7.907% 8.373% 8.605%;
+    padding: 34px 36px 37px;
     box-sizing: border-box;
     position: relative;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
     .popup {
         max-width: 282px;
-        padding: 8.865% 7.801%;
+        padding: 25px 22px;
     }
 }

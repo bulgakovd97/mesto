@@ -9,7 +9,21 @@
     margin-right: 27.727%;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 1024px) {
+    .profile__info {
+        grid-template-columns: 86.5% 9.143%;
+        grid-template-rows: 66.123% 28.658%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile__info {
+        grid-template-columns: 84.5% 11.143%;
+        grid-template-rows: 59.123% 32.658%;
+    }
+}
+
+@media screen and (max-width: 490px) {
     .profile__info {
         display: flex;
         flex-wrap: wrap;

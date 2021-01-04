@@ -8,10 +8,16 @@
     display: none;
     justify-content: center;
     align-items: flex-start;
-    padding: 195px 33.203125% 0;
+    padding: 195px calc((100vw - 430px)/2) 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
+    .overlay {
+        padding: 155px 21.9375% 0;
+    }
+}
+
+@media screen and (max-width: 490px) {
     .overlay {
         padding: 123px 5.9375% 0;
     }

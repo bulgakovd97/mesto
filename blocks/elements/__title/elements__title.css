@@ -10,3 +10,49 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+@media screen and (max-width: 1130px) {
+    .elements__title {
+        max-width: 150px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .elements__title {
+        font-size: 20px;
+        line-height: 25px;
+        max-width: 115px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .elements__title {
+        font-size: 16px;
+        line-height: 20px;
+        max-width: 110px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .elements__title {
+        font-size: 14px;
+        line-height: 18px;
+        max-width: 90px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .elements__title {
+        font-size: 12px;
+        line-height: 16px;
+        max-width: 65px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .elements__title {
+        max-width: 190px;
+        font-size: 24px;
+        line-height: 29px;
+    }
+}

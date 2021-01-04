@@ -2,7 +2,8 @@
     background-image: url('../../../images/like.svg');
     background-repeat: no-repeat;
     background-position: center;
-    width: 9%;
+    background-size: cover;
+    width: 22px;
     height: 20px;
     box-sizing: border-box;
     padding: 0;
@@ -13,4 +14,18 @@
 .elements__like-button:hover {
     opacity: 0.5;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .elements__like-button {
+        width: 16px;
+        height: 15px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .elements__like-button {
+        width: 22px;
+        height: 20px;
+    }
 }
