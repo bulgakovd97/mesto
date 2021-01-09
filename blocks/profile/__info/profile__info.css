@@ -1,7 +1,7 @@
 .profile__info {
     width: 38.182%;
     display: grid;
-    grid-template-columns: 88.5% 7.143%;
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
     grid-template-rows: 71.123% 28.658%;
     column-gap: 4.357%;
     row-gap: 4px;
@@ -11,14 +11,12 @@
 
 @media screen and (max-width: 1024px) {
     .profile__info {
-        grid-template-columns: 86.5% 9.143%;
         grid-template-rows: 66.123% 28.658%;
     }
 }
 
 @media screen and (max-width: 768px) {
     .profile__info {
-        grid-template-columns: 84.5% 11.143%;
         grid-template-rows: 59.123% 32.658%;
     }
 }
@@ -33,7 +31,7 @@
         padding-left: 46px;
         padding-right: 19px;
         box-sizing: border-box;
-        grid-template-columns: 87.5% 8.143%;
         grid-template-rows: 59.123% 35.658%;
+        justify-content: center;
     }
 }
