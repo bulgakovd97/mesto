@@ -32,8 +32,8 @@ popup.addEventListener('click', (event) => {
 //Сохранение данных о новом пользователе
 let formElement = popup.querySelector('.popup__form')
 
-let handleFormSubmit = (evt) => {
-    evt.preventDefault();
+let handleFormSubmit = (event) => {
+    event.preventDefault();
 
     nameProfile.textContent = nameInput.value
     occupationProfile.textContent = occupationInput.value
