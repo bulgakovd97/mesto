@@ -1,17 +1,17 @@
 .profile__info {
-    width: 38.182%;
+    width: 62.46%;
     display: grid;
-    grid-template-columns: repeat(2, minmax(min-content, max-content));
+    grid-template-columns: fit-content(505px) fit-content(24px);
     grid-template-rows: 71.123% 28.658%;
-    column-gap: 4.357%;
+    column-gap: 3.357%;
     row-gap: 4px;
     margin-left: 3.41%;
-    margin-right: 27.727%;
+    margin-right: 3.41%;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 910px) {
     .profile__info {
-        grid-template-rows: 66.123% 28.658%;
+        grid-template-rows: 69.123% 29.658%;
     }
 }
 

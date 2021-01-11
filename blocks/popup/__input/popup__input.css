@@ -1,4 +1,4 @@
-.popup__occupation {
+.popup__input {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     width: 100%;
@@ -7,11 +7,14 @@
     padding: 0;
     font-weight: normal;
     font-size: 14px;
-    margin-top: 8.38%;
+}
+
+.popup__input:first-of-type {
+    margin-bottom: 8.38%;
 }
 
 @media screen and (max-width: 768px) {
-    .popup__occupation {
-        margin-top: 12.605%;
+    .popup__input:first-of-type {
+        margin-bottom: 12.605%;
     }
 }

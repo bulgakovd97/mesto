@@ -12,6 +12,7 @@
     padding: 0;
     box-sizing: border-box;
     margin-top: 13.41%;
+    transition: opacity 0.2s linear;
 }
 
 .popup__submit:hover {
