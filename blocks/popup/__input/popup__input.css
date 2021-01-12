@@ -9,12 +9,12 @@
     font-size: 14px;
 }
 
-.popup__input:first-of-type {
+.popup__input:not(:last-of-type) {
     margin-bottom: 8.38%;
 }
 
 @media screen and (max-width: 768px) {
-    .popup__input:first-of-type {
+    .popup__input:not(:last-of-type) {
         margin-bottom: 12.605%;
     }
 }
