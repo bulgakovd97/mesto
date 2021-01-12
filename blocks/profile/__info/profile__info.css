@@ -28,10 +28,10 @@
         margin-bottom: 11.2%;
         margin-left: 0;
         margin-right: 0;
-        padding-left: 46px;
-        padding-right: 19px;
+        padding-left: 24px;
+        padding-right: 8px;
         box-sizing: border-box;
-        grid-template-rows: 59.123% 35.658%;
+        grid-template-rows: 59.123% 36.658%;
         justify-content: center;
     }
 }
