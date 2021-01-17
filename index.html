@@ -83,15 +83,27 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
-      <div class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="form">
-          <input class="popup__input popup__input_type_name" type="text" name="name" value="" placeholder="Имя" required>
-          <input class="popup__input popup__input_type_occupation" type="text" name="occupation" value="" placeholder="Занятие" required>
-          <button class="popup__submit" type="submit">Сохранить</button>
+    <section class="edit-popup">
+      <div class="edit-popup__container">
+        <h2 class="edit-popup__title">Редактировать профиль</h2>
+        <form class="edit-popup__form" name="edit-form">
+          <input class="edit-popup__input edit-popup__input_type_name" type="text" name="name" value="" placeholder="Имя" required>
+          <input class="edit-popup__input edit-popup__input_type_occupation" type="text" name="occupation" value="" placeholder="Занятие" required>
+          <button class="edit-popup__submit" type="submit">Сохранить</button>
         </form>
-        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+        <button class="edit-popup__close-button" type="button" aria-label="Закрыть"></button>
+      </div>
+    </section>
+
+    <section class="add-popup">
+      <div class="add-popup__container">
+        <h2 class="add-popup__title">Новое место</h2>
+        <form class="add-popup__form" name="add-form">
+          <input class="add-popup__input add-popup__input_type_title" type="text" name="title" value="" placeholder="Название" required>
+          <input class="add-popup__input add-popup__input_type_link" type="text" name="link" value="" placeholder="Ссылка на картинку" required>
+          <button class="add-popup__submit" type="submit">Создать</button>
+        </form>
+        <button class="add-popup__close-button" type="button" aria-label="Закрыть"></button>
       </div>
     </section>
 

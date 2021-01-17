@@ -1,4 +1,4 @@
-.popup {
+.add-popup {
     position: fixed;
     top: 0;
     right: 0;
@@ -12,13 +12,13 @@
 }
 
 @media screen and (max-width: 768px) {
-    .popup {
+    .add-popup {
         padding: 0 21.9375%;
     }
 }
 
 @media screen and (max-width: 490px) {
-    .popup {
+    .add-popup {
         padding: 123px 5.9375% 0;
         align-items: flex-start;
     }
