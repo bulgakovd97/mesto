@@ -49,15 +49,6 @@ const addButton = document.querySelector(".profile__add-button");
 //Кнопка редактирования профиля
 const editButton = document.querySelector(".profile__edit-button");
 
-//Кнопка "х" попапа добавления карточки
-const addCloseButton = addPopup.querySelector(".popup__close-button");
-
-//Кнопка "х" попапа редактирования профиля
-const editCloseButton = editPopup.querySelector(".popup__close-button");
-
-//Кнопка "x" попапа просмотра карточки
-const viewCloseButton = viewPopup.querySelector(".popup__close-button");
-
 //Поле ввода "имя"
 const nameInput = editPopup.querySelector('.popup__input_type_name');
 
@@ -82,6 +73,12 @@ const titleInput = addPopup.querySelector(".popup__input_type_title");
 //Поле вводе "Ссылка на картинку"
 const linkInput = addPopup.querySelector(".popup__input_type_link");
 
+//Фотография попапа просмотра картинки
+const viewImage = viewPopup.querySelector(".popup__image");
+
+//Подпись к фотографии попапа просмотра картинки
+const viewTitle = viewPopup.querySelector(".popup__title");
+
 
 //Действия с попапами (открытие/закрытие, обработка сабмитов)
 
@@ -93,7 +90,6 @@ function togglePopup(popup) {
 //Обработчик события клика по кнопке "+"
 function setAddOpenListener() {
     addButton.addEventListener('click', (evt) => {
-        evt.target === addButton;
         togglePopup(addPopup);
         addForm.reset();
     })
@@ -102,7 +98,6 @@ function setAddOpenListener() {
 //Обработчик события клика по кнопке редактирования профиля
 function setEditOpenListener() {
     editButton.addEventListener('click', (evt) => {
-        evt.target === editButton;
         togglePopup(editPopup);
 
         nameInput.value = nameProfile.textContent;
@@ -110,48 +105,10 @@ function setEditOpenListener() {
     })
 }
 
-//Обработчик события клика по кнопке "х" попапа добавления карточки
-function setAddCloseButtonListener() {
-    addCloseButton.addEventListener('click', (evt) => {
-        evt.target === addCloseButton;
-        togglePopup(addPopup);
-    })
-}
-
-//Обработчик события клика по оверлэю попапа добавления карточки
-function setAddOverlayCloseListener() {
-    addPopup.addEventListener('mousedown', (evt) => {
-        if (evt.target === evt.currentTarget) {
-            togglePopup(addPopup);
-        }
-    })    
-}
-
-//Обработчик события клика по кнопке "х" попапа редактирования профиля
-function setEditCloseButtonListener() {
-    editCloseButton.addEventListener('click', (evt) => {
-        evt.target === editCloseButton;
-        togglePopup(editPopup);
-    })
-}
-
-//Обработчик события клика по оверлэю попапа редактирования профиля
-function setEditOverlayCloseListener() {
-    editPopup.addEventListener('mousedown', (evt) => {
-        if (evt.target === evt.currentTarget) {
-            togglePopup(editPopup);
-        }
-    })
-}
-
 //Обработчик события клика по картинке (для просмотра картинки)
 function setOpenViewImageListener(photo, title) {
     photo.addEventListener('click', (evt) => {
-        evt.target.closest("card__image");
         togglePopup(viewPopup);
-
-        const viewImage = viewPopup.querySelector(".popup__image");
-        const viewTitle = viewPopup.querySelector(".popup__title");
 
         viewTitle.textContent = title.textContent;
         viewImage.src = photo.src;
@@ -159,63 +116,33 @@ function setOpenViewImageListener(photo, title) {
     })
 }
 
-//Обработчик события клика по кнопке "х" попапа просмотра карточки
-function setViewImageCloseButtonListener() {
-    viewCloseButton.addEventListener('click', (evt) => {
-        evt.target === viewCloseButton;
-        togglePopup(viewPopup);
+//Обработчик событий кликов по оверлэю попапов и по кнопке "x"
+function setCloseListener() {
+    const popups = document.querySelectorAll(".popup");
+
+    popups.forEach(function (popup) {
+        popup.addEventListener('click', (evt) => {
+            if (evt.target.classList.contains("popup_opened")) {
+                togglePopup(popup);
+            }
+            if (evt.target.classList.contains("popup__close-button")) {
+                togglePopup(popup);
+            }
+        })
     })
-}
-
-//Обработчик события клика по оверлэю попапа просмотра карточки
-function setViewImageOverlayCloseListener() {
-    viewPopup.addEventListener('mousedown', (evt) => {
-        if (evt.target === evt.currentTarget) {
-            togglePopup(viewPopup);
-        }
-    })
-}
-
-//Обработчики события клика попапа редактирования профиля
-function setEditCloseListeners() {
-    setEditCloseButtonListener();
-    setEditOverlayCloseListener();
-    setEditSubmitListener();
-}
-
-//Обработчики события клика попапа добавления карточки
-function setAddCloseListeners() {
-    setAddCloseButtonListener();
-    setAddOverlayCloseListener();
-}
-
-//Обработчики события клика попапа просмотра картинки
-function setViewImageCloseListeners() {
-    setViewImageCloseButtonListener();
-    setViewImageOverlayCloseListener();
-}
-
-//Обработчики события клика попапов добавления карточки и редактирования профиля
-function setOpenListeners() {
-    setAddOpenListener();
-    setEditOpenListener();
-}
-
-//Обработчики события клика по кнопке "х" попапов добавления карточки и редактирования профиля
-function setCloseListeners() {
-    setAddCloseListeners();
-    setEditCloseListeners();
-    setViewImageCloseListeners();
 }
 
 //Открытие попапов добавления карточки и редактирования профиля
 function openPopup() {
-    setOpenListeners();
+    setAddOpenListener();
+    setEditOpenListener();
 }
 
 //Закрытие попапов добавления карточки и редактирования профиля
 function closePopup() {
-    setCloseListeners();
+    setCloseListener();
+    setAddSubmitListener();
+    setEditSubmitListener();
 }
 
 //Лайк карточки
@@ -272,8 +199,6 @@ function handleAddSubmit(evt) {
 
     newItem.name = titleInput.value;
     newItem.link = linkInput.value;
-
-    initialCards.unshift(newItem);
     
     addCard(newItem);
     
@@ -293,7 +218,6 @@ function addCard(item) {
 //Добавление карточек в разметку
 function renderCard(item) {
     cards.append(getCard(item));
-    setAddSubmitListener();
 }
 
 //Отображение карточек
