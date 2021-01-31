@@ -1,0 +1,10 @@
+.popup_type_view {
+    padding: 0;
+    display: flex;
+}
+
+@media screen and (max-width: 490px) {
+    .popup_type_view {
+        align-items: center;
+    }
+}

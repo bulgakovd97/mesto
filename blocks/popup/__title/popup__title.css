@@ -1,4 +1,4 @@
-.edit-popup__title {
+.popup__title {
     padding: 0;
     margin: 0;
     color: #000000;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .edit-popup__title {
+    .popup__title {
         font-size: 18px;
     }
 }
