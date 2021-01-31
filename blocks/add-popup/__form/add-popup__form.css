@@ -1,9 +1,0 @@
-.add-popup__form {
-    margin-top: 15.7%;
-}
-
-@media screen and (max-width: 768px) {
-    .add-popup__form {
-        margin-top: 31.51%;
-    }
-}
