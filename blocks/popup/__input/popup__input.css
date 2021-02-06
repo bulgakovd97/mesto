@@ -9,12 +9,20 @@
     font-size: 14px;
 }
 
-.popup__input:not(:last-of-type) {
-    margin-bottom: 8.38%;
+.popup__input::-webkit-input-placeholder {
+    color: #c4c4c4;
+}
+
+.popup__input::-moz-placeholder {
+    color: #c4c4c4;
+}
+
+.popup__input:not(:first-of-type) {
+    margin-top: 3.64%;
 }
 
 @media screen and (max-width: 768px) {
-    .popup__input:not(:last-of-type) {
-        margin-bottom: 12.605%;
+    .popup__input:not(:first-of-type) {
+        margin-top: 5.47%;
     }
 }
