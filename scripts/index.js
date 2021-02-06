@@ -104,6 +104,8 @@ function setAddOpenListener() {
     addButton.addEventListener('click', (evt) => {
         openPopup(addPopup);
         addForm.reset();
+
+        enableValidation(selectors);
     })
 }
 
@@ -114,6 +116,8 @@ function setEditOpenListener() {
 
         nameInput.value = nameProfile.textContent;
         occupationInput.value = occupationProfile.textContent;
+
+        enableValidation(selectors);
     })
 }
 
