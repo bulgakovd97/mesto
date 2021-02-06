@@ -85,15 +85,24 @@ const viewTitle = viewPopup.querySelector(".popup__title");
 
 //Действия с попапами (открытие/закрытие, обработка сабмитов)
 
-//Добавление/удаление классов попапов
-function togglePopup(popup) {
-    popup.classList.toggle("popup_opened");
+//Открытие попапа
+function openPopup(popup) {
+    popup.classList.add("popup_opened");
+
+    document.addEventListener('keydown', handleEscUp);
+}
+
+//Закрытие попапа
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
+
+    document.removeEventListener('keydownk', handleEscUp);
 }
 
 //Обработчик события клика по кнопке "+"
 function setAddOpenListener() {
     addButton.addEventListener('click', (evt) => {
-        togglePopup(addPopup);
+        openPopup(addPopup);
         addForm.reset();
     })
 }
@@ -101,7 +110,7 @@ function setAddOpenListener() {
 //Обработчик события клика по кнопке редактирования профиля
 function setEditOpenListener() {
     editButton.addEventListener('click', (evt) => {
-        togglePopup(editPopup);
+        openPopup(editPopup);
 
         nameInput.value = nameProfile.textContent;
         occupationInput.value = occupationProfile.textContent;
@@ -111,7 +120,7 @@ function setEditOpenListener() {
 //Обработчик события клика по картинке (для просмотра картинки)
 function setOpenViewImageListener(photo, title) {
     photo.addEventListener('click', (evt) => {
-        togglePopup(viewPopup);
+        openPopup(viewPopup);
 
         viewTitle.textContent = title.textContent;
         viewImage.src = photo.src;
@@ -122,37 +131,20 @@ function setOpenViewImageListener(photo, title) {
 //Обработчик событий кликов по оверлэю попапов и по кнопке "x"
 function setCloseListener() {
     popups.forEach(function (popup) {
-        popup.addEventListener('mousedown', (evt) => {
+        popup.addEventListener('click', (evt) => {
             if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("popup__close-button")) {
-                togglePopup(popup);
+                closePopup(popup);
             }
         })
     })
 }
 
 //Обработчик события кнопки Esc
-function handleEscUp() {
-    popups.forEach(function (popup) {
-        document.addEventListener('keydown', (evt) => {
-            if (evt.key === 'Escape' && popup.classList.contains("popup_opened")) {
-                togglePopup(popup);
-            };
-        })
-    })
-}
-
-//Открытие попапов добавления карточки и редактирования профиля
-function openPopup() {
-    setAddOpenListener();
-    setEditOpenListener();
-}
-
-//Закрытие попапов добавления карточки и редактирования профиля
-function closePopup() {
-    handleEscUp();
-    setCloseListener();
-    setAddSubmitListener();
-    setEditSubmitListener();
+function handleEscUp(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector(".popup_opened");
+        closePopup(openedPopup);
+    }
 }
 
 //Лайк карточки
@@ -172,7 +164,7 @@ function handleEditSubmit(evt) {
     nameProfile.textContent = nameInput.value;
     occupationProfile.textContent = occupationInput.value;
 
-    togglePopup(editPopup);
+    closePopup(editPopup);
 }
 
 //Обработчик события сохранения информации о новом пользователе
@@ -212,7 +204,7 @@ function handleAddSubmit(evt) {
     
     addCard(newItem);
     
-    togglePopup(addPopup);
+    closePopup(addPopup);
 }
 
 //Обработчик события клика по кнопке "Создать" попапа добавления картинки
@@ -238,8 +230,17 @@ function render() {
 //Вызов функции отображения карточек
 render();
 
-//Вызов функции открытия попапа
-openPopup();
+//Открытие попапа добавления карточки
+setAddOpenListener();
 
-//Вызов функции закрытия попапа
-closePopup();
+//Открытие попапа редактирования профиля
+setEditOpenListener();
+
+//Закрытие попапов добавления карточки и редактирования профиля при клике по оверлэю и по кнопке "x"
+setCloseListener();
+
+//Закрытие попапа добавления карточки при клике на кнопку "Создать"
+setAddSubmitListener();
+
+//Закрытие попапа редактирования профиля при клике на кнопку "Сохранить"
+setEditSubmitListener();
