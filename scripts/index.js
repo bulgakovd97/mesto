@@ -83,9 +83,6 @@ const viewImage = viewPopup.querySelector(".popup__image");
 const viewTitle = viewPopup.querySelector(".popup__title");
 
 
-export { cards, viewPopup, viewTitle, viewImage, addPopup, addForm, titleInput, linkInput };
-
-
 //Действия с попапами (открытие/закрытие, обработка сабмитов)
 
 //Открытие попапа
@@ -107,8 +104,6 @@ function setAddOpenListener() {
     addButton.addEventListener('click', () => {
         openPopup(addPopup);
         addForm.reset();
-
-        launchValidation();
     })
 }
 
@@ -119,8 +114,6 @@ function setEditOpenListener() {
 
         nameInput.value = nameProfile.textContent;
         occupationInput.value = occupationProfile.textContent;
-
-        launchValidation();
     })
 }
 
@@ -158,6 +151,14 @@ function setEditSubmitListener() {
     editForm.addEventListener('submit', handleEditSubmit);
 }
 
+function handleCardClick(title, image) {
+    viewTitle.textContent = title;
+    viewImage.src = image;
+    viewImage.alt = title;
+
+    openPopup(viewPopup);
+}
+
 //Открытие попапа добавления карточки
 setAddOpenListener();
 
@@ -173,40 +174,57 @@ setEditSubmitListener();
 //Импорт данных для создания карточек
 import { Card } from './Card.js';
 
+//Создание карточки
+function createCard(title, image) {
+    const card = new Card(title, image, '.card-template');
+
+    const cardElement = card.getCard();
+
+    return cardElement;
+}
+
+//Вставка в разметку карточки начального массива
+const renderCard = (item) => {
+    cards.append(createCard(item.name, item.link));
+}
+
 //Отображение карточек начального массива
 const render = () => {
     initialCards.forEach((item) => {
-        const card = new Card(item, '.card');
-        
-        const cardElement = card.getCard();
-
-        cards.prepend(cardElement);
+        renderCard(item);
     })
 }
 
-//Добавление на страницу новой карточки через форму
-const addNewCard = () => {
-    const newCard = new Card({}, '.card');
+//Вставка в разметку новой карточки
+const addCard = () => {
+    cards.prepend(createCard(titleInput.value, linkInput.value));
+}
 
-    const newCardElement = newCard.setAddSubmitListener();
-    
-    return newCardElement;
+//Обработчик события клика по кнопке "Создать" попапа добавления карточки
+const setAddSubmitListener = () => {
+    addForm.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+
+        addCard();
+
+        closePopup(addPopup);
+    })
 }
 
 //Вызов функции отображения карточек начального массива
 render();
 
-//Вызов функции добавления на страницу новой карточки через форму
-addNewCard();
+//Закрытие попапа добавления карточки при клике на кнопку "Создать"
+setAddSubmitListener();
 
 //Импорт данных для функции валидации форм
 import { config, FormValidator } from './FormValidator.js';
 
 //Функция валидации форм
 const launchValidation = () => {
-    const addFormValidator = new FormValidator(config, addPopup);
+    const addFormValidator = new FormValidator(config, 'add-form');
 
-    const editFormValidator = new FormValidator(config, editPopup);
+    const editFormValidator = new FormValidator(config, 'edit-form');
 
     addFormValidator.enableValidation();
     editFormValidator.enableValidation();
@@ -214,3 +232,5 @@ const launchValidation = () => {
 
 //Запуск функции валидации форм
 launchValidation();
+
+export { cards, handleCardClick };

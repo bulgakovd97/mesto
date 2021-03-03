@@ -15,16 +15,16 @@ class FormValidator {
     _inactiveButtonClass;
     _inputErrorClass;
     _errorClass;
-    _popup;
+    _form;
 
-    constructor(selectors, popup) {
+    constructor(selectors, form) {
         this._formSelector = selectors.formSelector;
         this._inputSelector = selectors.inputSelector;
         this._submitButtonSelector = selectors.submitButtonSelector;
         this._inactiveButtonClass = selectors.inactiveButtonClass;
         this._inputErrorClass = selectors.inputErrorClass;
         this._errorClass = selectors.errorClass;
-        this._popup = popup;
+        this._form = form;
     }
 
     _showInputError(formElement, inputElement, errorMessage) {
@@ -80,15 +80,13 @@ class FormValidator {
     }
     
     enableValidation() {
-        const formElement = this._popup.querySelector(this._formSelector);
-
+        const formElement = document.getElementById(this._form);
+        
         formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
         })
 
-        const fieldset = formElement.querySelector('.popup__form-set');
-
-        this._setEventListeners(fieldset);
+        this._setEventListeners(formElement);
     }
 }
 
