@@ -30,6 +30,10 @@ const addButton = document.querySelector(".profile__add-button");
 
 const editButton = document.querySelector(".profile__edit-button");
 
+const nameInput = document.querySelector(".popup__input_type_name");
+
+const occupationInput = document.querySelector(".popup__input_type_occupation");
+
 
 const config = {
   formSelector: '.popup__form',
@@ -41,4 +45,4 @@ const config = {
 };
 
 
-export { initialCards, addButton, editButton, config };
+export { initialCards, addButton, editButton, nameInput, occupationInput, config };
