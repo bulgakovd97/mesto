@@ -1,21 +1,4 @@
-//Объявление селекторов
-const config = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-};
-
-class FormValidator {
-    _formSelector;
-    _inputSelector;
-    _submitButtonSelector;
-    _inactiveButtonClass;
-    _inputErrorClass;
-    _errorClass;
-    _form;
+export default class FormValidator {
 
     constructor(selectors, form) {
         this._formSelector = selectors.formSelector;
@@ -89,6 +72,3 @@ class FormValidator {
         this._setEventListeners(formElement);
     }
 }
-
-//Экспорт данных для валидации форм
-export { config, FormValidator };
