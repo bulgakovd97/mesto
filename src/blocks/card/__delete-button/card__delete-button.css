@@ -13,6 +13,7 @@
     top: 5.32%;
     right: 5.32%;
     transition: opacity 0.2s linear;
+    display: none;
 }
 
 .card__delete-button:hover {

@@ -1,41 +1,22 @@
-//Массив начальных карточек
-const initialCards = [
-    {
-      title: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      title: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      title: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      title: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      title: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      title: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
 const addButton = document.querySelector(".profile__add-button");
 
 const editButton = document.querySelector(".profile__edit-button");
 
+const avatarButton = document.querySelector(".profile__avatar-button");
+
 const nameInput = document.querySelector(".popup__input_type_name");
 
-const occupationInput = document.querySelector(".popup__input_type_occupation");
+const aboutInput = document.querySelector(".popup__input_type_about");
+
+const avatarInput = document.querySelector(".popup__input_type_avatar");
+
+const titleInput = document.querySelector(".popup__input_type_title");
+
+const linkInput = document.querySelector(".popup__input_type_link");
 
 
-const config = {
+
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
@@ -44,5 +25,13 @@ const config = {
   errorClass: 'popup__error_visible'
 };
 
+const options = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  headers: {
+    authorization: '0e96852d-62c6-41f3-9055-b88bc0850f61',
+    'Content-Type': 'application/json',
+  },
+}
 
-export { initialCards, addButton, editButton, nameInput, occupationInput, config };
+
+export { addButton, editButton, avatarButton, nameInput, aboutInput, avatarInput, titleInput, linkInput, validationConfig, options };

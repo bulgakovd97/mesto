@@ -2,6 +2,7 @@ export default class Popup {
 
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
+        this._buttonElement = this._popup.querySelector(".popup__button");
         this._handleEscClose = this._handleEscClose.bind(this);
     }
 
@@ -29,5 +30,21 @@ export default class Popup {
                 this.close();
             }
         })
+    }
+
+    preload(isLoading) {
+        if (isLoading) {
+            this._buttonElement.textContent = "Сохранение...";
+        } else {
+            this._buttonElement.textContent = "Сохранить";
+        }
+    }
+
+    preremove(isLoading) {
+        if (isLoading) {
+            this._buttonElement.textContent = "Удаление...";
+        } else {
+            this._buttonElement.textContent = "Да";
+        }
     }
 }
