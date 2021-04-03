@@ -1,5 +1,3 @@
-import { nameInput, aboutInput, avatarInput, titleInput, linkInput } from "../utils/constants";
-
 export default class Api {
     constructor(config) {
         this.url = config.url;
@@ -30,36 +28,36 @@ export default class Api {
         return Promise.all([this.getUserInfo(), this.getInitialCards()])
     }
 
-    setUserInfo() {
+    setUserInfo(name, about) {
         return fetch(`${this.url}/users/me`, {
             method: 'PATCH',
             headers: this.headers,
             body: JSON.stringify({
-                name: nameInput.value,
-                about: aboutInput.value,
+                name: name,
+                about: about,
             })
         })
             .then(this._checkApiRequest)
     }
 
-    changeAvatar() {
+    changeAvatar(avatar) {
         return fetch(`${this.url}/users/me/avatar`, {
             method: 'PATCH',
             headers: this.headers,
             body: JSON.stringify({
-                avatar: avatarInput.value,
+                avatar: avatar,
             })
         })
             .then(this._checkApiRequest)
     }
 
-    addCard() {
+    addCard(name, link) {
         return fetch(`${this.url}/cards`, {
             method: 'POST',
             headers: this.headers,
             body: JSON.stringify({
-                name: titleInput.value,
-                link: linkInput.value,
+                name: name,
+                link: link,
             })
         })
             .then(this._checkApiRequest)

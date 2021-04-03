@@ -44,10 +44,10 @@ api.getInitialData()
 
 
 const editPopupForm = new PopupWithForm(".popup_type_edit", { 
-    handleFormSubmit: () => {
+    handleFormSubmit: (formValues) => {
         editPopupForm.preload(true);
-
-        api.setUserInfo()
+        
+        api.setUserInfo(formValues.name, formValues.about)
             .then(data => {
                 userInfo.setUserInfo(data);
             })
@@ -59,27 +59,27 @@ const editPopupForm = new PopupWithForm(".popup_type_edit", {
 
 
 const addPopupForm = new PopupWithForm(".popup_type_add", { 
-    handleFormSubmit: () => {
+    handleFormSubmit: (cardData) => {
         addPopupForm.preload(true);
-
-        api.addCard()
+        
+        api.addCard(cardData.name, cardData.link)
             .then(card => {
                 const cardElement = createCard(card);
 
                 cardList.addItem(cardElement);
             })
             .catch(err => console.log('Ошибка добавления новой карточки - ' + err))
-        
+
         addPopupForm.preload(false);
     } 
 });
     
 
 const avatarPopupForm = new PopupWithForm(".popup_type_avatar", {
-    handleFormSubmit: () => {
+    handleFormSubmit: (formValues) => {
         avatarPopupForm.preload(true);
-
-        api.changeAvatar()
+        
+        api.changeAvatar(formValues.avatar)
             .then(data => {
                 userInfo.setUserAvatar(data);
             })

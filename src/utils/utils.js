@@ -36,7 +36,7 @@ export function createCard(item) {
             
             popupConfirm.setSubmitAction(() => {
                 popupConfirm.preremove(true);
-
+                
                 api.removeCard(item._id)
                     .then(() => {
                         card.remove();
@@ -45,7 +45,7 @@ export function createCard(item) {
                     })
                     .catch(err => console.log('Ошибка удаления карточки - ' + err))
             })
-
+            
             popupConfirm.preremove(false);
         }
     },
